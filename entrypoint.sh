@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ln -sf model/model.onnx /output
-python inference.py
+ln -sf /usr/local/bin/model.onnx /output
+ENTRYPOINT ["python", "/usr/local/bin/inference.py"]

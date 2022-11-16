@@ -5,10 +5,10 @@ RUN pip install joblib
 RUN pip install Pandas
 RUN pip install onnxruntime
 
-RUN mkdir model
+COPY model.onnx /usr/local/bin/
+COPY inference.py /usr/local/bin/
+COPY entrypoint.sh /usr/local/bin/
 
-COPY /output/model/model.onnx ./model/
-COPY inference.py ./inference.py
-COPY entrypoint.sh ./entrypoint.sh
+RUN chmod a+x /usr/local/bin/inference.py
 
 ENTRYPOINT ["sh", "./entrypoint.sh"]
